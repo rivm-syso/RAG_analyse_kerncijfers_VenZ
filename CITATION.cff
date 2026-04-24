@@ -1,0 +1,36 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.3.0
+title: Kerncijfers_kamerbrieven
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - name: National Institute For public health and
+    address: Antonie van Leeuwenhoeklaan 9
+    city: Bilthoven
+    country: NL
+    post-code: ' 3721 MA'
+    website: 'https://www.rivm.nl/'
+repository-code: 'https://github.com/rivm-syso/TODO'
+abstract: >
+  This work describes the code for recreating the figures
+  and results described in [TODO]. 
+  Please find the README for more information. 
+keywords:
+  - kerncijfers
+  - kamerbrieven
+  - stringmatching
+  - Retrieval Augmented Generation
+license: EUPL-1.2
+contact:
+  - affiliation: "National Institute for Public Health and the Environment"
+    email: jens.ruhof@rivm.nl
+    family-names: Ruhof
+    given-names: Jens
+  - affiliation: "Nivel"
+    email: C.Laarman@nivel.nl
+    family-names: Laarman
+    given-names: Claudia

@@ -1,0 +1,19 @@
+# Ignore environment/config
+.env
+
+# Ignore file types
+*.pdf
+*.csv
+*.txt
+*.xlsx
+
+# Exceptions: track specific txt file
+!src/keyword_search/unwanted_words.txt
+
+# Ignore folders
+downloads/
+data/
+app/
+tests/
+results/
+experiments/
