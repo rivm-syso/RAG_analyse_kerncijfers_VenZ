@@ -1,6 +1,6 @@
 import os
 from pathlib import Path
-from openai_connection import RIVM_AI_PLATFORM
+from openai_connection import AI_CONNECTION
 
 # === CONFIG ===
 # Load configuration from environment variables
@@ -15,7 +15,7 @@ if not authorization_file_path:
     raise ValueError("AUTHORIZATION_FILE_PATH environment variable not set. Please set it to the path of your authorization JSON file.")
 
 config = {}
-ai_platform = RIVM_AI_PLATFORM()
+ai_platform = AI_CONNECTION()
 client = ai_platform.OpenAI(authorization_file_path, config)
 
 def get_existing_vector_store_id():

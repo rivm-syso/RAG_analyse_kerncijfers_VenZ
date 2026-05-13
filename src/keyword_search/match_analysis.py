@@ -9,7 +9,8 @@ from typing import List, Set, Optional
 from sklearn.preprocessing import MultiLabelBinarizer
 
 # --- Configuration ---
-DATA_PATH = os.getenv('DATA_PATH', 'pdf_matches_brieven_2.csv')
+DATA_PATH = os.getenv('DATA_PATH', 'pdf_matches_brieven.csv')
+print(DATA_PATH)
 CONTEXT_COLUMNS = ['PDF File', 'Matched Search Term', 'Matched Word', 'Page Number', 'Context']
 UNWANTED_WORDS_PATH = os.getenv('UNWANTED_WORDS_PATH', 'src/keyword_search/unwanted_words.txt')  # (Optional) path to a file with unwanted words, else use in-code list
 
@@ -65,6 +66,9 @@ LABEL_MAP = {
     "RIVM": "RIVM",
     "NZa": "NZa",
     "ZIN": "ZIN",
+    "ZN": "ZIN",
+    "ZINL": "ZIN",
+    "zorginstituut": "ZIN",
     "trimbos": "Trimbos",
     "nivel": "Nivel",
     "SCP": "SCP",
@@ -99,18 +103,19 @@ def plot_institute_counts(summary_df: pd.DataFrame, title=None):
     ax.barh(index - bar_height/2, summary_df['Total_matches'], height=bar_height, color=nivel_blauw, label="Totaal")
 
     for i, (v1, v2) in enumerate(zip(summary_df['Total_matches'], summary_df['Unique_PDFs'])):
-        ax.text(v2 + 1, i + bar_height/2, str(v2), va='center', color=nivel_rood)
-        ax.text(v1 + 1, i - bar_height/2, str(v1), va='center', color=nivel_blauw)
+        ax.text(v2 + 1, i + bar_height/2, str(v2), va='center', color=nivel_rood, fontsize=13)
+        ax.text(v1 + 1, i - bar_height/2, str(v1), va='center', color=nivel_blauw, fontsize=13)
         
     ax.set_yticks(index)
-    ax.set_yticklabels(summary_df.index)
-    ax.set_xlabel("Aantal matches")
-    ax.set_ylabel("Kennisinstituut")
+    ax.set_yticklabels(summary_df.index, fontsize=16)
+    ax.set_xlabel("Aantal keer genoemd", fontsize=16, loc='right')
+    # ax.set_ylabel("Kennisinstituut")
     if title:
-        ax.set_title(title)
-
+        ax.set_title(title, fontsize=16)
+    ax.tick_params(axis='both', labelsize=16)
     # Legend outside the plot, right bottom
-    ax.legend(loc='lower right', bbox_to_anchor=(1.25, 0.05))
+    # Legenda onder de grafiek, links uitgelijnd
+    ax.legend(loc='lower left', bbox_to_anchor=(0, -0.20), ncol=2, fontsize=13, frameon=True)
     plt.tight_layout()
     plt.show()
 
@@ -172,7 +177,9 @@ def main():
     )
 
     # 6. Plot results
-    plot_institute_counts(summary_df, title="Aantal matches en unieke documenten per kennisinstituut")
+    # plot_institute_counts(summary_df, title="Aantal matches en unieke documenten per kennisinstituut")
+    plot_institute_counts(summary_df)
+
     plot_cooccurrence_heatmap(filtered_df)
 
     logging.info("Done.")

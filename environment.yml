@@ -1,0 +1,23 @@
+name: VenZ
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - ipykernel
+  - beautifulsoup4
+  - ca-certificates
+  - openssl
+  - requests
+  - pandas
+  - certifi
+  - pdfplumber
+  - tqdm
+  - matplotlib
+  - openai
+  - pinecone
+  - datasets
+  - ipywidgets
+  - seaborn
+  - scikit-learn
+  - openpyxl
+prefix: /mnt/scratch_dir/ruhofj/conda/envs/VenZ

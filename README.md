@@ -6,32 +6,33 @@
 ---
 
 ## Overview
-This repository contains scripts and tools for the analysis of Kamerbrieven (parliamentary letters) and related documents concerning the Staat van Volksgezondheid en Zorg (StaatVenZ). The toolkit enables PDF keyword searching, match analysis, web scraping, and Retrieval Augmented Generation (RAG) topic extraction. Outputs include detailed CSV files for downstream analysis and visualization.
+This repository contains scripts and tools for the analysis of Kamerbrieven (parliamentary letters) and related documents concerning the Staat van Volksgezondheid en Zorg (StaatVenZ). The toolkit enables PDF keyword searching, matched word analysis, web scraping, and Retrieval Augmented Generation (RAG) topic extraction. Outputs include detailed CSV files for downstream analysis and visualization.
 
 ---
 
 ## Folder Structure
+```
 staatVenZ/
 │
 ├── src/
-│ ├── keyword_search/
-│ │ ├── keyword_search.py
-│ │ ├── match_analysis.py
-│ │ └── unwanted_words.txt
-│ ├── RAG/
-│ │ ├── pipeline.py
-│ │ └── topics.py
-│ └── webscraping/
-│ └── scrape_brieven.py
+│   ├── keyword_search/
+│   │   ├── keyword_search.py
+│   │   ├── match_analysis.py
+│   │   └── unwanted_words.txt
+│   ├── RAG/
+│   │   ├── create_vector_store.py.py
+│   │   ├── openai_connection.py
+│   │   ├── pipeline.py
+│   │   └── topics.py
+│   └── webscraping/
+│       └── scrape_brieven.py
 │
-├── tests/
-│
-├── .env
+├── environment.yml
 ├── .gitignore
-├── CITATION.md
+├── CITATION.cff
 ├── LICENSE.md
-├── local_path.py
 ├── README.md
+```
 
 
 ## Background
@@ -41,24 +42,12 @@ The website www.staatvenz.nl aims to provide up-to-date and unambiguous data, wh
 
 ## Setup & Configuration
 
-### ⚠️ Security Notice
-
-This project handles sensitive file paths and API credentials. **Never commit sensitive information to Git.**
-
-**For detailed security guidelines, see [SECURITY.md](SECURITY.md).**
-
 ### Installation
 
-1. **Install Python dependencies:**
+1. **Create conda environment**
    ```bash
-   pip install -r requirements.txt
-   ```
-
-2. **Setup environment configuration:**
-   ```bash
-   cp .env.example .env
-   # Edit .env and fill in your actual paths and credentials
-   nano .env  # or your preferred editor
+   conda env create -f environment.yml
+   conda activate VenZ
    ```
 
 3. **Key Configuration Variables:**
@@ -67,13 +56,6 @@ This project handles sensitive file paths and API credentials. **Never commit se
    - `AUTHORIZATION_FILE_PATH` - Path to AI platform authorization JSON
    - `MODEL_NAME` - AI model name (for RAG pipeline)
    - `VECTOR_STORE_ID` - Vector store identifier (for RAG pipeline)
-
-   See `.env.example` for all available options.
-
-4. **Ensure `.env` is not committed:**
-   - `.env` is already in `.gitignore` ✅
-   - Do not commit `.env` or any `*-authorization.json` files
-   - Always use `.env.example` as a template for team members
 
 ---
 
@@ -138,12 +120,6 @@ python src/RAG/pipeline.py
 
 ---
 
-## Code Quality
-
-For a detailed code review and analysis, see [CODE_REVIEW_REPORT.md](CODE_REVIEW_REPORT.md).
-
----
-
 ## Methode
 
 ### Data
@@ -155,7 +131,6 @@ For a detailed code review and analysis, see [CODE_REVIEW_REPORT.md](CODE_REVIEW
 
 ### Keyword search
 - **keyword_search.py** 
-
     PDF Keyword Matching and Reporting
 
     This script scans a directory of PDF files (typically Dutch parliamentary letters) for specified keywords and URLs related to the Staat VenZ and its partner institutes. It combines a base list of search terms with additional URLs from a CSV file, then parses each PDF using pdfplumber, searching for matches at the word level. For each match, it records context, location, and—where applicable—reference numbers and citations. The results are saved to CSV files: one detailing all matches, one summarizing keyword frequencies across documents, and one reporting per-PDF statistics. The script uses robust logging, handles PDF parsing errors gracefully, and provides a progress bar during processing. All file and folder locations are managed via local_path.py for easy configuration.
@@ -198,8 +173,7 @@ For a detailed code review and analysis, see [CODE_REVIEW_REPORT.md](CODE_REVIEW
 ## Resultaten
 
 - De Staat VenZ wordt weinig genoemd als bron (32 keer in 24 unieke Kamerbrieven).
-- Consortiumpartners zoals RIVM en NZa worden veel vaker genoemd (>4000 keer).
-- Kerncijfers worden vooral gebruikt om de context (stand van zaken, aanleiding) te schetsen.
+- Consortiumpartners zoals RIVM, NZa en ZIN worden veel vaker genoemd (>4000 keer).
 - Bronnen worden meestal vermeld in voetnoten, vaak met consortiumpartner als bron.
 - De AI-methode RAG bleek effectief in het vinden van statistieken in Kamerbrieven.
 
@@ -215,7 +189,7 @@ For a detailed code review and analysis, see [CODE_REVIEW_REPORT.md](CODE_REVIEW
 
 - Alleen Kamerbrieven geanalyseerd (geen commissieverslagen, nota's, etc.).
 - Pdf-parser kan tekst of figuren missen.
-- AI-output is niet altijd 100% reproduceerbaar.
+- AI-output is niet deterministisch.
 - Vier Kamerbrieven konden niet worden geanalyseerd door technische beperkingen.
 
 ---
@@ -226,14 +200,7 @@ For a detailed code review and analysis, see [CODE_REVIEW_REPORT.md](CODE_REVIEW
 - Doe kwalitatief onderzoek met beleidsmakers en Kamerleden voor meer inzicht.
 - Ontwikkel een uniforme bronvermeldingsstrategie voor Kamerbrieven.
 - Gebruik de RAG-methode als signaleringsfunctie voor relevante kerncijfers.
-
----
-
-## Gebruik van scripts & data
-
-- **String matching script:** [Gitlab link](#)
-- **RAG scripts & prompts:** [Gitlab link](#)
-- Scripts zijn geschreven in Python en maken gebruik van OpenAI via Microsoft Azure.
+- Verbeter document recall door RAG met stringmatching the combineren.
 
 ---
 
@@ -263,6 +230,9 @@ Laarman, C, Vanhommerig, J, Ruhof, J, Hendriks, C, Dekker, L, Knottnerus, B. Het
 
 <!-- Voor meer informatie en andere publicaties:  
 [Nivel publicaties](https://www.nivel.nl/publicaties) -->
+jens.ruhof@rivm.nl
+
+C.laarman@nicel.nl
 ## License
 
 This project is licensed under the European Union Public Licence (EUPL) v.1.2.  

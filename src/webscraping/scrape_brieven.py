@@ -1,4 +1,6 @@
 """
+We strongly advise ignoring this script and instead look at https://opendata.tweedekamer.nl/ for data retrieval.
+
 Script to scrape and download Dutch parliamentary government letters (brieven van de regering)
 from the Tweede Kamer website for the VWS committee, between 2021 and 2025.
 

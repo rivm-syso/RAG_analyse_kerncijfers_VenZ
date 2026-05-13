@@ -13,8 +13,8 @@ from tqdm import tqdm
 import os
 
 # Load configuration from environment variables
-PDF_DIR = Path(os.getenv('PDF_DIR', './data/brieven'))
-URLS_CSV = Path(os.getenv('URLS_CSV', './data/urls.csv'))
+PDF_DIR = Path(os.getenv('PDF_DIR', './downloads/Brieven'))
+URLS_CSV = Path(os.getenv('URLS_CSV', './data/Bezoekcijfers kerncijfers 2025 tm 2 december.csv'))
 OUTPUT_MATCHES = Path(os.getenv('OUTPUT_MATCHES', 'pdf_matches_brieven.csv'))
 OUTPUT_SUMMARY = Path(os.getenv('OUTPUT_SUMMARY', 'keyword_summary_brieven.csv'))
 OUTPUT_STATS = Path(os.getenv('OUTPUT_STATS', 'pdf_stats_brieven.csv'))
