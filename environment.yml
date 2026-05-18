@@ -20,4 +20,3 @@ dependencies:
   - seaborn
   - scikit-learn
   - openpyxl
-prefix: /mnt/scratch_dir/ruhofj/conda/envs/VenZ
