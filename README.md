@@ -232,7 +232,8 @@ Laarman, C, Vanhommerig, J, Ruhof, J, Hendriks, C, Dekker, L, Knottnerus, B. Het
 [Nivel publicaties](https://www.nivel.nl/publicaties) -->
 jens.ruhof@rivm.nl
 
-C.laarman@nicel.nl
+C.laarman@nivel.nl
+
 ## License
 
 This project is licensed under the European Union Public Licence (EUPL) v.1.2.  
