@@ -8,13 +8,17 @@ message: >-
   metadata from this file.
 type: software
 authors:
-  - name: National Institute For public health and
+  - name: National Institute for Public Health and the Environment
     address: Antonie van Leeuwenhoeklaan 9
     city: Bilthoven
     country: NL
-    post-code: ' 3721 MA'
+    post-code: '3721 MA'
     website: 'https://www.rivm.nl/'
-repository-code: 'https://github.com/rivm-syso/TODO'
+repository-code: 'https://github.com/rivm-syso/RAG_analyse_kerncijfers_VenZ'
+url: 'https://github.com/rivm-syso/RAG_analyse_kerncijfers_VenZ'
+version: 1.0.0
+doi: TBD
+date-released: 2026-05-18
 abstract: >
   This work describes the code for recreating the figures
   and results described in [TODO]. 
