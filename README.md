@@ -1,7 +1,7 @@
 # StaatVenZ key figure Analysis Toolkit
 
 **Auteurs:** Claudia Laarman, Joost Vanhommerig, Jens Ruhof, Carlijn Hendriks, Louise Dekker, Bart Knottnerus  
-**Publicatie:** Utrecht: Nivel, 2026
+**Publicatie:** [Utrecht: Nivel, 2026](https://www.nivel.nl/nl/publicatie/het-gebruik-van-kerncijfers-van-de-staat-volksgezondheid-en-zorg-kamerbrieven)
 
 ---
 
