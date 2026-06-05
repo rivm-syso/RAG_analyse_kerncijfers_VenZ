@@ -19,7 +19,7 @@ version: 1.0.0
 date-released: 2026-05-18
 abstract: >
   This work describes the code for recreating the figures
-  and results described in [TODO HYPERREF]. 
+  and results described in 'https://www.nivel.nl/nl/publicatie/het-gebruik-van-kerncijfers-van-de-staat-volksgezondheid-en-zorg-kamerbrieven'. 
   Please find the README for more information. 
 keywords:
   - kerncijfers
@@ -36,4 +36,3 @@ contact:
     email: C.Laarman@nivel.nl
     family-names: Laarman
     given-names: Claudia
-doi: 10.21945/e5239945-222a-4ed8-920a-0d03fed09e8d
